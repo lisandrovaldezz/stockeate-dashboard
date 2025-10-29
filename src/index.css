@@ -1,0 +1,1746 @@
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.app-header {
+  display: flex;
+  background: #061522;
+  width: 100vw;
+  height: 5rem;
+  align-items: center;
+  text-indent: 2rem;
+  font-size: 18px;
+  color: #f0f0f0;
+  justify-content: space-between;
+}
+
+/* ----------------------------------------- LOGIN ----------------------------------------- */
+
+.login-container {
+  background-color: #03031d;
+  width: 100vw;
+  height: 100vh;
+}
+
+.login-container h1 {
+  margin-bottom: 2rem;
+}
+
+.login-form-container {
+  display: flex;
+  place-items: center;
+  flex-direction: column;
+  padding: 2rem;
+  color: #f0f0f0;
+  margin-top: 7rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: 1.3rem;
+}
+
+.login-form-input {
+  padding: 12px 16px;
+  width: 350px;
+  font-size: 20px;
+  background: rgb(31, 27, 77);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  outline: none;
+}
+
+.login-form-input:is(:-webkit-autofill, :autofill) {
+  font-size: 20px !important;
+  -webkit-box-shadow: 0 0 0 30px rgb(31, 27, 77) inset;
+  -webkit-text-fill-color: #fff;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.login-form input::placeholder {
+  color: #ffffff33;
+}
+
+.login-buttons {
+  padding: 12px;
+  width: 380px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+}
+
+.login-button {
+  background: rgba(5, 104, 253, 0.856);
+}
+
+.register-button {
+  background: rgb(21, 26, 59);
+}
+
+.login-buttons:hover {
+  filter: brightness(130%);
+}
+
+.forgot-password {
+  background: none;
+  border: none;
+  color: rgb(102, 99, 99);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.forgot-password:hover {
+  filter: brightness(140%);
+}
+
+/* ----------------------------------------- SQUARE ----------------------------------------- */
+
+.square {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 35px;
+  width: 220px;
+  height: 220px;
+  color: #fff;
+  border: 2px solid rgb(68, 68, 70);
+  background: #393e81ff;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.square h1 {
+  font-size: 500%;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+  white-space: nowrap;
+}
+
+.square-text {
+  display: flex;
+  gap: 0px;
+  align-items: center;
+  width: 200px;
+  position: absolute;
+  margin-top: 160px;
+}
+
+.square h4 {
+  font-size: 18px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.square img {
+  width: 36px;
+}
+
+/* ----------------------------------------- SKELETON SQUARE ----------------------------------------- */
+
+.square-skeleton {
+  background: #e0e0e0 !important;
+  animation: square-skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+.square-skeleton-number {
+  width: 120px;
+  height: 80px;
+  background: #d0d0d0;
+  border-radius: 8px;
+  animation: square-skeleton-shimmer 1.5s infinite;
+}
+
+.square-skeleton-text {
+  width: 150px;
+  height: 20px;
+  background: #d0d0d0;
+  border-radius: 4px;
+  margin-top: 160px;
+  position: absolute;
+  animation: square-skeleton-shimmer 1.5s infinite;
+}
+
+@keyframes square-skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes square-skeleton-shimmer {
+  0% {
+    background: #d0d0d0;
+  }
+  50% {
+    background: #c0c0c0;
+  }
+  100% {
+    background: #d0d0d0;
+  }
+}
+
+/* ----------------------------------------- DASHBOARD ----------------------------------------- */
+
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  background-color: #03031d;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-left: 300px;
+  width: calc(100vw - 300px);
+  background-color: #03031d;
+}
+
+.dashboard-aside {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: 2rem;
+  background: #061522;
+  width: 300px;
+  height: 100vh;
+  color: #f0f0f0;
+  position: fixed;
+  z-index: 10;
+}
+
+.logout-button {
+  position: absolute;
+  bottom: 2%;
+  left: 20px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: sans-serif;
+  margin-right: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-button:hover {
+  transform: scale(1.01);
+}
+
+.logout-button img {
+  width: 15px;
+  margin-right: 6px;
+}
+
+.dashboard-squares {
+  display: flex;
+  gap: 5rem;
+  margin-top: 100px;
+  justify-content: center;
+}
+
+.dashboard-section {
+  display: flex;
+  gap: 10rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.dashboard-ultimos-remitos {
+  display: flex;
+  flex-direction: column;
+  color: #f0f0f0;
+  text-indent: 30px;
+}
+
+.dashboard-list {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: 2rem;
+  background: #061522;
+  border: 3px solid #737579;
+  border-radius: 20px;
+  width: 900px;
+  height: 400px;
+  color: #f0f0f0;
+}
+
+.dashboard-low-stock {
+  display: flex;
+  align-self: center;
+  padding: 15px 20px;
+  border: 1px solid #ffcc00;
+  border-left: 6px solid #ff9900;
+  border-top: 3px solid #ff9900;
+  border-radius: 8px;
+  background-color: #f5eed4;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  gap: 10px;
+  height: 58px;
+  transition: 0.2s;
+}
+
+.dashboard-low-stock:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(252, 235, 2, 0.74);
+}
+
+.dashboard-low-stock-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dashboard-low-stock-title img {
+  width: 38px;
+  height: 38px;
+}
+
+.dashboard-low-stock-title h3 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #333;
+  font-weight: 500;
+}
+
+.dashboard-low-stock h1 {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 700;
+  color: #ff9900;
+  margin-bottom: 5px;
+}
+
+.dashboard-aside .back-and-title {
+  margin-bottom: 2rem;
+}
+
+.dashboard-charts {
+  display: flex;
+  padding: 0 2rem;
+  margin-top: 2rem;
+  margin-bottom: 10rem;
+}
+
+/* ----------------------------------------- BACK AND TITLE ----------------------------------------- */
+
+.back-and-title {
+  display: flex;
+  gap: 2rem;
+}
+
+.back-and-title img {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  align-self: center;
+}
+
+.back-and-title a {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  place-items: center;
+  text-decoration: none;
+}
+
+/* ----------------------------------------- LOW STOCK SKELETON ----------------------------------------- */
+
+.dashboard-low-stock-skeleton {
+  display: flex;
+  align-self: center;
+  padding: 15px 20px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #e0e0e0;
+  border-top: 3px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  gap: 10px;
+  height: 58px;
+  align-items: center;
+}
+
+.low-stock-skeleton-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+.low-stock-skeleton-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.low-stock-skeleton-text-line {
+  width: 100px;
+  height: 12px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+.low-stock-skeleton-number {
+  width: 60px;
+  height: 40px;
+  margin-left: auto;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: low-stock-skeleton-loading 1.5s infinite;
+}
+
+@keyframes low-stock-skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ----------------------------------------- DASHBOARD BUTTON ----------------------------------------- */
+
+.dashboard-button {
+  padding: 12px;
+  width: 250px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+}
+
+.dashboard-aside button:hover {
+  filter: brightness(130%);
+}
+
+/* ----------------------------------------- PRODUCTS ----------------------------------------- */
+
+.products-container {
+  background-color: #03031d;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.products-container .back-and-title {
+  margin-left: 2rem;
+}
+
+.products-search {
+  padding: 12px 16px;
+  width: 350px;
+  font-size: 20px;
+  background: rgb(31, 27, 77);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  outline: none;
+  margin-left: 5vw;
+}
+
+.products-search:is(:-webkit-autofill, :autofill) {
+  font-size: 20px !important;
+  -webkit-box-shadow: 0 0 0 30px rgb(31, 27, 77) inset;
+  -webkit-text-fill-color: #fff;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.products-search::placeholder {
+  color: #ffffff33;
+}
+
+.products-table {
+  margin-left: 5vw;
+  width: 90vw;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.products-table-head {
+  background-color: #061522;
+  color: #f0f0f0;
+}
+
+.products-table-row {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.products-table-row-head {
+  padding: 12px 0;
+  font-size: 20px;
+}
+
+.products-table-body {
+  background-color: #03031d;
+  color: #f0f0f0;
+}
+
+.products-table-cell {
+  padding: 8px 0;
+  font-size: 20px;
+}
+
+.products-table-code,
+.products-table-name {
+  width: 30%;
+}
+
+.products-table-price,
+.products-table-stock {
+  width: 19%;
+}
+
+.products-table-actions {
+  width: 2%;
+  height: fit-content;
+}
+
+.products-cancel-button,
+.products-save-button {
+  width: 24px;
+  height: 24px;
+}
+
+.products-table-cell input {
+  width: 100%;
+  background: none;
+  padding: 12px 0;
+  font-size: 20px;
+  text-align: center;
+  border: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #eee;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.products-table-actions button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.products-table-actions img {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+.products-table-actions img:hover {
+  transform: scale(1.1);
+}
+
+.products-sort-button,
+.add-product-button,
+.toggle-inactive-button,
+.refresh-products-button {
+  background: #035fc2;
+  padding: 6px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  outline: none;
+}
+
+.products-filters {
+  display: flex;
+  gap: 3rem;
+}
+
+.add-product-button img {
+  width: 20px;
+}
+
+.products-sort-button,
+.refresh-products-button,
+.add-product-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.toggle-inactive-button {
+  background: #555;
+}
+
+.add-product-button:hover,
+.toggle-inactive-button:hover,
+.refresh-products-button:hover {
+  filter: brightness(120%);
+}
+
+.inactive-row {
+  color: #eeeeee91;
+}
+
+.toggle-inactive-button.active {
+  background-color: #035fc2;
+}
+
+.editing-row {
+  border: 1px solid #3087e6;
+  background-color: #e3e7eb85;
+  transition: all 0.2s ease;
+}
+
+/* ----------------------------------------- TABLE SKELETON ----------------------------------------- */
+
+.table-skeleton-cell {
+  height: 20px;
+  background: linear-gradient(90deg, #1a1a3e 25%, #252550 50%, #1a1a3e 75%);
+  background-size: 200% 100%;
+  animation: table-skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+  margin: 0 auto;
+}
+
+skeleton-products-table-body {
+  border: none;
+}
+
+.skeleton-products-table-row {
+  border: none;
+}
+
+.table-skeleton-code {
+  width: 70%;
+}
+
+.table-skeleton-name {
+  width: 60%;
+}
+
+.table-skeleton-price {
+  width: 50%;
+}
+
+.table-skeleton-stock {
+  width: 30%;
+}
+
+@keyframes table-skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ----------------------------------------- BRANCH SELECT ----------------------------------------- */
+
+.branch-select-container {
+  background-color: #03031d;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.branch-select-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.branch-select-item {
+  width: 35%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+.branch-select-item:hover {
+  filter: brightness(110%);
+}
+
+.branch-select-continue {
+  margin-top: 5rem;
+  width: 35%;
+  padding: 14px;
+  background-color: #007aff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.branch-select-continue:hover {
+  filter: brightness(120%);
+  transform: scale(1.005);
+}
+
+/* ----------------------------------------- BRANCH SKELETON ----------------------------------------- */
+
+.branch-skeleton-branch {
+  background: #2a2a4e !important;
+  border: 2px solid #3a3a6e !important;
+  cursor: default !important;
+  animation: branch-skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+.branch-skeleton-branch:hover {
+  filter: none !important;
+}
+
+.branch-skeleton-branch-text {
+  height: 35px;
+  background: linear-gradient(90deg, #3a3a6e 25%, #4a4a7e 50%, #3a3a6e 75%);
+  background-size: 200% 100%;
+  animation: branch-skeleton-shimmer 1.5s infinite;
+  border-radius: 8px;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.branch-skeleton-button {
+  background: #1a4a7e !important;
+  cursor: default !important;
+}
+
+.branch-skeleton-button:hover {
+  filter: none !important;
+  transform: none !important;
+}
+
+.branch-skeleton-button-text {
+  height: 20px;
+  background: linear-gradient(90deg, #2a5a8e 25%, #3a6a9e 50%, #2a5a8e 75%);
+  background-size: 200% 100%;
+  animation: branch-skeleton-shimmer 1.5s infinite;
+  border-radius: 4px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+@keyframes branch-skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes branch-skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ----------------------------------------- TOGGLE SWITCH ----------------------------------------- */
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.toggle-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.toggle-input:checked + .toggle-slider {
+  background-color: #2196f3;
+}
+
+.toggle-input:checked + .toggle-slider:before {
+  transform: translateX(18px);
+}
+
+.toggle-input:focus + .toggle-slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+.toggle-switch.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ----------------------------------------- MODAL ADD PRODUCT ----------------------------------------- */
+
+.modal-product-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-product-close img {
+  width: 10px;
+  height: 10px;
+  filter: saturate(10%);
+}
+
+.modal-product-container {
+  background: #0a0b4bf5;
+  padding: 25px;
+  border-radius: 8px;
+  width: 400px;
+  height: 500px;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transform: scale(0.9);
+  opacity: 0;
+  border: 1px solid #9b9999;
+
+  transition: all 0.3s ease;
+}
+
+.modal-product-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 50px;
+}
+
+.modal-product-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+
+.modal-product-form input {
+  margin-top: 4px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: rgb(53, 55, 73);
+  font-size: 16px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.modal-product-form input::placeholder {
+  color: #cccccc69;
+}
+
+.modal-product-add-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  margin-top: 40px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal-add-remito-close img {
+  width: 10px;
+  height: 10px;
+  filter: saturate(10%);
+  transition: transform 0.2s ease;
+}
+
+.modal-add-remito-close img:hover {
+  transform: scale(1.1);
+}
+
+.modal-product-add-btn:hover {
+  background: #3c98fa;
+}
+
+.modal-product-overlay.show {
+  opacity: 1;
+}
+
+.modal-product-container.show {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* ----------------------------------------- REMITOS ----------------------------------------- */
+
+.remitos-container {
+  background: #03031d;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.remitos-container .back-and-title {
+  margin-left: 2rem;
+}
+
+.remitos-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.remitos-search {
+  padding: 12px 16px;
+  width: 350px;
+  font-size: 20px;
+  background: rgb(31, 27, 77);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  outline: none;
+  margin-left: 5vw;
+}
+
+.remitos-search:is(:-webkit-autofill, :autofill) {
+  font-size: 20px !important;
+  -webkit-box-shadow: 0 0 0 30px rgb(31, 27, 77) inset;
+  -webkit-text-fill-color: #fff;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.remitos-search::placeholder {
+  color: #ffffff33;
+}
+
+.remitos-filters {
+  display: flex;
+  margin-bottom: 2rem;
+  gap: 3rem;
+}
+
+.remitos-filters button {
+  background: #035fc2;
+  padding: 6px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  border: 2px solid transparent;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.remitos-filters button:hover {
+  filter: brightness(120%);
+}
+
+.remitos-filters img {
+  width: 25px;
+  height: 25px;
+}
+
+.remitos-filters button.active {
+  background: #3551a0;
+  border: 2px solid rgb(205, 208, 247);
+}
+
+/* ----------------------------------------- MODAL REMITOS ----------------------------------------- */
+
+.remito-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.remito-modal-container {
+  background: rgb(14, 16, 46);
+  border-radius: 8px;
+  border: 1px solid #9b9999;
+  padding: 1rem;
+  width: 700px;
+  max-height: 80vh;
+  overflow-y: auto;
+  animation: slideIn 0.2s ease-in-out;
+}
+
+.remito-modal-header {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1rem;
+  text-indent: 0;
+}
+
+.remito-modal-header-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-indent: 0;
+}
+
+.remito-modal-header-title h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.remito-modal-header-title span {
+  font-size: 14px;
+}
+
+.remito-modal-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.remito-modal-table th,
+.remito-modal-table td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.remito-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.remito-pdf-button {
+  background: #388e3c;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.remito-pdf-button:hover {
+  background: #47ac4c;
+}
+
+.remito-close-button {
+  background: #dd2121;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.8rem;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.remito-close-button:hover {
+  background: #e73737;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-15px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* ----------------------------------------- REMITO CARD ----------------------------------------- */
+
+.remito-card {
+  border: 1px solid #9b9999;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: #2a2a4e;
+  transition: 0.2s;
+  min-width: 650px;
+}
+
+.remito-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remito-card:hover {
+  background: rgba(56, 56, 119, 0.795);
+}
+.remito-card h2 {
+  margin: 0;
+  padding: 0;
+}
+.remito-card p {
+  margin: 12px;
+  padding: 0;
+}
+
+.remito-card span {
+  font-size: 18px;
+}
+
+.remito-card button {
+  margin-top: 0.5rem;
+  background: #035fc2;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.remito-card button:hover {
+  filter: brightness(125%);
+}
+
+/* ----------------------------------------- REMITOS SKELETON ----------------------------------------- */
+
+.remito-skeleton {
+  background: linear-gradient(90deg, #2a2a4e 25%, #3a3a6e 50%, #2a2a4e 75%);
+  background-size: 200% 100%;
+  animation: remito-skeleton-loading 1.5s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+@keyframes remito-skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.remito-skeleton-card {
+  background: #2a2a4e !important;
+  border: 1px solid #9b9999;
+  cursor: default;
+  pointer-events: none;
+}
+
+.remito-skeleton-card:hover {
+  background: #2a2a4e !important;
+}
+
+.remito-skeleton-remito-title {
+  width: 150px;
+  height: 28px;
+  border-radius: 6px;
+}
+
+.remito-skeleton-badge {
+  width: 80px;
+  height: 24px;
+  border-radius: 4px;
+}
+
+.remito-skeleton-text {
+  width: 100%;
+  height: 20px;
+  margin: 12px;
+  border-radius: 4px;
+}
+
+.remito-skeleton-text-short {
+  width: 70%;
+  height: 20px;
+  margin: 12px;
+  border-radius: 4px;
+}
+
+.remito-skeleton-button {
+  width: 120px;
+  height: 36px;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+}
+
+/* ----------------------------------------- MODAL CREAR REMITO ----------------------------------------- */
+
+.remito-add-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+  z-index: 1000;
+}
+
+.remito-add-modal-content {
+  background: #0a0b4bf5;
+  padding: 25px;
+  border-radius: 10px;
+  width: fit-content;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+  border: 1px solid #9b9999;
+  position: relative;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.remito-add-form-group {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.remito-add-modal-content textarea,
+.remito-add-modal-content select,
+.remito-add-modal-content input {
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: rgb(53, 55, 73);
+  font-size: 16px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.remito-add-form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.remito-add-modal-content textarea::placeholder,
+.remito-add-modal-content input::placeholder {
+  color: #cccccc69;
+}
+
+.remito-add-modal-content hr {
+  margin-top: 30px;
+}
+
+.remito-add-product-selector {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.remito-add-product-selector button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.remito-add-product-selector button:hover {
+  background: #3c98fa;
+}
+
+.remito-add-item-list {
+  margin-top: 15px;
+  list-style: none;
+  padding: 0;
+}
+
+.remito-add-item-list li {
+  background: #43437e;
+  padding: 8px;
+  margin-top: 10px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remito-add-remove-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.modal-add-remito-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.remito-add-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.remito-add-modal-actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.remito-add-modal-actions button:first-child {
+  background: #007bff;
+  color: white;
+}
+
+.remito-add-modal-actions button:last-child {
+  background: #969393;
+}
+
+.remito-add-modal-actions button:hover {
+  filter: brightness(120%);
+}
+
+/* ----------------------------------------- LAST REMITOS ----------------------------------------- */
+
+.last-remitos-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow-x: hidden;
+  background: #2a2a4e;
+}
+
+.last-remitos-list::-webkit-scrollbar {
+  width: 7px;
+}
+
+.last-remitos-list::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 202px;
+  margin: 12px 0;
+}
+
+.last-remitos-list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(180deg, #5889c0 0%, #1a5da5 100%);
+}
+
+.last-remitos-list::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #5a91cf 0%, #1579dd 100%);
+}
+
+.last-remitos-list .remito-mini-card {
+  margin-bottom: 0;
+}
+
+.last-remitos-list .remito-mini-card:first-child {
+  border-top: 1px solid transparent;
+}
+
+.last-remitos-list .remito-mini-card:last-child {
+  border-bottom: 1px solid transparent;
+}
+
+/* ----------------------------------------- REMITO MINI CARD ----------------------------------------- */
+
+.remito-mini-card {
+  border: 1px solid #9b9999;
+  padding: 0.5rem 1rem;
+  background: #2a2a4e;
+  transition: 0.2s;
+  min-width: 875px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 5px;
+}
+
+.remito-mini-card-left {
+  display: flex;
+  flex-direction: column;
+  height: 30px;
+  margin-left: -20px;
+}
+
+.remito-mini-card:hover {
+  background: rgba(56, 56, 119, 0.795);
+}
+
+.remito-mini-card h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.remito-mini-card-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.remito-mini-card-info {
+  display: flex;
+}
+
+.remito-mini-card-info p {
+  padding: 0;
+  margin: 0;
+  margin-top: 6px;
+}
+
+.remito-mini-card button {
+  background: #035fc2;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.remito-mini-card button:hover {
+  filter: brightness(125%);
+}
+
+.remito-mini-card .in-out-badge {
+  font-size: 12px;
+}
+
+/* ----------------------------------------- IN OUT BADGE ----------------------------------------- */
+
+.in-out-badge {
+  font-size: 10px;
+  margin: 0;
+  padding: 4px 8px;
+  text-indent: 0;
+  font-family: sans-serif;
+}
+
+.in-out-badge.in {
+  border: 2px solid green;
+  color: green;
+  border-radius: 4px;
+}
+
+.in-out-badge.out {
+  border: 2px solid red;
+  color: red;
+  border-radius: 4px;
+}
+
+/* ----------------------------------------- SKELETON REMITO MINI CARD ----------------------------------------- */
+
+@keyframes remito-mini-skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.remito-mini-card-skeleton {
+  background: linear-gradient(90deg, #2a2a4e 25%, #3a3a6e 50%, #2a2a4e 75%);
+  background-size: 200% 100%;
+  animation: remito-mini-skeleton-loading 1.5s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+.skeleton-remito-mini-card {
+  background: #2a2a4e !important;
+  border: 1px solid #9b9999;
+  cursor: default;
+  pointer-events: none;
+}
+
+.skeleton-mini-card:hover {
+  background: #2a2a4e !important;
+}
+
+.skeleton-remito-mini-title {
+  width: 180px;
+  height: 28px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+
+.skeleton-remito-mini-text {
+  width: 200px;
+  height: 18px;
+  margin-right: 20px;
+  margin-top: 6px;
+  border-radius: 4px;
+}
+
+.skeleton-remito-mini-badge {
+  width: 100px;
+  height: 24px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+}
+
+.skeleton-remito-mini-button {
+  width: 100px;
+  height: 32px;
+  border-radius: 4px;
+}
+
+/* ----------------------------------------- SKELETON CHART ----------------------------------------- */
+
+@keyframes chart-skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.chart-skeleton {
+  background: linear-gradient(90deg, #2a2a4e 25%, #3a3a6e 50%, #2a2a4e 75%);
+  background-size: 200% 100%;
+  animation: chart-skeleton-loading 1.5s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+.chart-skeleton-container {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.skeleton-chart-title {
+  width: 350px;
+  height: 24px;
+  margin: 0 auto 20px;
+  border-radius: 6px;
+}
+
+.chart-skeleton-content {
+  display: flex;
+  flex: 1;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.chart-skeleton-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding-right: 10px;
+}
+
+.chart-skeleton-y-label {
+  width: 30px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+.chart-skeleton-bars {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 100%;
+  gap: 8px;
+}
+
+.chart-skeleton-bar-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+}
+
+.chart-skeleton-bar-pair {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+  height: calc(100% - 20px);
+  width: 100%;
+  justify-content: center;
+}
+
+.chart-skeleton-bar {
+  width: 20px;
+  max-width: 35px;
+  min-height: 20px;
+  border-radius: 4px 4px 0 0;
+}
+
+.chart-skeleton-bar-1 {
+  background: linear-gradient(90deg, #393e81 25%, #4a50a0 50%, #393e81 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+.chart-skeleton-bar-2 {
+  background: linear-gradient(90deg, #ff7b00 25%, #ff9533 50%, #ff7b00 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+.chart-skeleton-x-label {
+  width: 50px;
+  height: 12px;
+  margin-top: 8px;
+  border-radius: 3px;
+}
+
+/* Leyenda */
+.chart-skeleton-legend {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 15px;
+}
+
+.chart-skeleton-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chart-skeleton-legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+}
+
+.chart-skeleton-legend-color-1 {
+  background: #393e81;
+  animation: none;
+}
+
+.chart-skeleton-legend-color-2 {
+  background: #ff7b00;
+  animation: none;
+}
+
+.chart-skeleton-legend-text {
+  width: 80px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+svg:focus {
+  outline: none;
+}
