@@ -1,20 +1,21 @@
 import { ProductContext } from "./ProductContext.jsx";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { api } from "../../api.js";
+import { useBranches } from "../../hooks/useBranches.js";
 
 export function ProductProvider({ children }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { branch } = useBranches();
 
-  const fetchProducts = async () => {
+  const fetchProducts = useCallback(async () => {
     try {
       setLoading(true);
-      const branchId = localStorage.getItem("branch_id");
-      if (!branchId) return;
+      if (!branch.id) return;
 
       const res = await api.get("/products", {
         params: {
-          branchId,
+          branchId: branch.id,
           includeArchived: 1,
         },
       });
@@ -25,11 +26,11 @@ export function ProductProvider({ children }) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [branch.id]);
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [fetchProducts]);
 
   return (
     <ProductContext.Provider

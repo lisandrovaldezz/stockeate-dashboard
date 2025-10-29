@@ -45,6 +45,8 @@ export function useAuth() {
 
   const logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("branch_id");
+    localStorage.removeItem("branch_name");
     setToken(null);
   };
 

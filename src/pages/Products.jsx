@@ -13,6 +13,7 @@ import { ToggleSwitch } from "../components/ToggleSwitch.jsx";
 import { ModalAddProduct } from "../components/ModalAddProduct.jsx";
 import { useSearchParams } from "react-router-dom";
 import { BackAndTitle } from "../components/BackAndTitle.jsx";
+import { useBranches } from "../hooks/useBranches.js";
 
 export function Products() {
   const { products, loading, fetchProducts } = useProducts();
@@ -25,9 +26,8 @@ export function Products() {
   const [localStates, setLocalStates] = useState({});
   const [searchParams] = useSearchParams();
   const [sortAscending, setSortAscending] = useState(true);
+  const { branch } = useBranches();
   const openModal = searchParams.get("openModal");
-
-  const branchId = localStorage.getItem("branch_id");
 
   const editRef = useRef(null);
 
@@ -72,7 +72,7 @@ export function Products() {
 
   const handleSaveEdit = async () => {
     try {
-      await updateProduct(editingCode, branchId, {
+      await updateProduct(editingCode, branch.id, {
         code: editedProduct.code,
         name: editedProduct.name,
         price: Number(editedProduct.price),
@@ -97,7 +97,7 @@ export function Products() {
     setUpdating(p.code);
 
     try {
-      await toggleProductActive(p.code, branchId);
+      await toggleProductActive(p.code, branch.id);
       toast.success(
         `Producto ${newState ? "activado" : "desactivado"} correctamente ✅`
       );

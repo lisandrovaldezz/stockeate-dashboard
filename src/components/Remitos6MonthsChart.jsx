@@ -10,16 +10,17 @@ import {
 } from "recharts";
 import { getRemitosStatsLast6Months } from "../api.js";
 import { ChartSkeleton } from "../components/skeletons/ChartSkeleton.jsx";
+import { useBranches } from "../hooks/useBranches.js";
 
 export function Remitos6MonthsChart() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const branchId = localStorage.getItem("branch_id");
+  const { branch } = useBranches();
 
   useEffect(() => {
     async function fetchStats() {
       try {
-        const stats = await getRemitosStatsLast6Months(branchId);
+        const stats = await getRemitosStatsLast6Months(branch.id);
         setData(stats);
       } catch (error) {
         console.error("Error al obtener estadísticas de productos:", error);
@@ -27,20 +28,20 @@ export function Remitos6MonthsChart() {
         setLoading(false);
       }
     }
-    if (branchId?.length) {
+    if (branch.id?.length) {
       fetchStats();
     }
-  }, [branchId]);
+  }, [branch.id]);
 
   if (loading) return <ChartSkeleton />;
   if (!data.length) return <p>No hay datos de los últimos meses.</p>;
 
   return (
-    <div style={{ width: "100%", height: 300 }}>
+    <div style={{ width: "100%", height: "300px" }}>
       <h3 style={{ textAlign: "center", marginBottom: "10px" }}>
         Productos ingresados y egresados por mes
       </h3>
-      <ResponsiveContainer>
+      <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data}>
           <XAxis dataKey="month" tick={{ fill: "#555", fontSize: 13 }} />
           <YAxis tick={{ fill: "#555", fontSize: 13 }} />

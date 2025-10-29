@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { createRemito } from "../api";
 import { useRemitos } from "../hooks/useRemitos.js";
 import { useProducts } from "../hooks/useProducts.js";
+import { useBranches } from "../hooks/useBranches.js";
 import toast from "react-hot-toast";
 import cancel from "../assets/cancel.svg";
 
@@ -9,6 +10,7 @@ export function ModalAddRemito({ onClose }) {
   const modalRef = useRef(null);
   const { fetchRemitos } = useRemitos();
   const { products, fetchProducts } = useProducts();
+  const { branch } = useBranches();
 
   const [formData, setFormData] = useState({
     tmpNumber: "",
@@ -84,9 +86,7 @@ export function ModalAddRemito({ onClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const branchId = localStorage.getItem("branch_id");
-
-    if (!branchId) {
+    if (!branch.id) {
       toast.error("Falta seleccionar sucursal");
       return;
     }
@@ -98,7 +98,7 @@ export function ModalAddRemito({ onClose }) {
 
     const newRemito = {
       ...formData,
-      branchId,
+      branchId: branch.id,
     };
 
     try {

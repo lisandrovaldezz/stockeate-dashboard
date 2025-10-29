@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { addProduct } from "../api.js";
+import { useBranches } from "../hooks/useBranches.js";
 import toast from "react-hot-toast";
 import cancel from "../assets/cancel.svg";
 
 export function ModalAddProduct({ onClose, fetchProducts }) {
+  const { branch } = useBranches();
   const [form, setForm] = useState({
     code: "",
     name: "",
@@ -13,7 +15,6 @@ export function ModalAddProduct({ onClose, fetchProducts }) {
 
   const [visible, setVisible] = useState(false);
   const modalRef = useRef(null);
-  const branchId = localStorage.getItem("branch_id");
 
   useEffect(() => {
     const timeout = setTimeout(() => setVisible(true), 10);
@@ -48,7 +49,7 @@ export function ModalAddProduct({ onClose, fetchProducts }) {
     }
 
     try {
-      await addProduct(branchId, {
+      await addProduct(branch.id, {
         code: form.code,
         name: form.name,
         price: Number(form.price),

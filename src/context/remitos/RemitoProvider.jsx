@@ -1,20 +1,21 @@
 import { RemitoContext } from "./RemitoContext.jsx";
 import { useState, useEffect, useCallback } from "react";
 import { api, getRemitosStats } from "../../api.js";
+import { useBranches } from "../../hooks/useBranches.js";
 
 export function RemitoProvider({ children }) {
   const [remitos, setRemitos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({ total: 0, inCount: 0, outCount: 0 });
-  const branchId = localStorage.getItem("branch_id");
+  const { branch } = useBranches();
 
   const fetchRemitos = useCallback(async () => {
     try {
       setLoading(true);
-      if (!branchId) return;
+      if (!branch.id) return;
 
       const res = await api.get("/remitos", {
-        params: { branchId, includeArchived: 1 },
+        params: { branchId: branch.id, includeArchived: 1 },
       });
 
       setRemitos(res.data);
@@ -23,22 +24,22 @@ export function RemitoProvider({ children }) {
     } finally {
       setLoading(false);
     }
-  }, [branchId]);
+  }, [branch.id]);
 
   const fetchStats = useCallback(async () => {
-    if (!branchId) return;
+    if (!branch.id) return;
 
     try {
       const now = new Date();
       const year = now.getFullYear();
       const month = now.getMonth() + 1;
 
-      const data = await getRemitosStats(branchId, year, month);
+      const data = await getRemitosStats(branch.id, year, month);
       setStats(data);
     } catch (error) {
       console.error("Error al obtener estadísticas de remitos:", error);
     }
-  }, [branchId]);
+  }, [branch.id]);
 
   useEffect(() => {
     fetchRemitos();
