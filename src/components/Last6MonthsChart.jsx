@@ -1,3 +1,4 @@
+// Last6MonthsBarChart.jsx
 import {
   BarChart,
   Bar,
@@ -7,15 +8,17 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { getRemitosStatsLast6Months } from "../api.js";
-import { ChartSkeleton } from "../components/skeletons/ChartSkeleton.jsx";
+import { ChartSkeleton } from "./skeletons/ChartSkeleton.jsx";
 import { useCharts } from "../hooks/useCharts.js";
 
-export function Remitos6MonthsChart() {
-  const { data, loading } = useCharts(
-    getRemitosStatsLast6Months,
-    "Error al obtener estadísticas de remitos:"
-  );
+export function Last6MonthsBarChart({
+  apiFunction,
+  chartTitle,
+  errorLogMessage,
+  bar1Name,
+  bar2Name,
+}) {
+  const { data, loading } = useCharts(apiFunction, errorLogMessage);
 
   if (loading) return <ChartSkeleton />;
   if (!data || !data.length) return <p>No hay datos de los últimos meses.</p>;
@@ -23,7 +26,7 @@ export function Remitos6MonthsChart() {
   return (
     <div style={{ width: "100%", height: "300px" }}>
       <h3 style={{ textAlign: "center", marginBottom: "10px" }}>
-        Remitos ingresados y egresados por mes
+        {chartTitle}
       </h3>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data}>
@@ -50,14 +53,14 @@ export function Remitos6MonthsChart() {
             dataKey="ingresos"
             fill="#393e81"
             radius={[6, 6, 0, 0]}
-            name="Ingresos"
+            name={bar1Name}
             animationDuration={800}
           />
           <Bar
             dataKey="egresos"
             fill="#ff7b00"
             radius={[6, 6, 0, 0]}
-            name="Egresos"
+            name={bar2Name}
             animationDuration={800}
             animationBegin={300}
           />

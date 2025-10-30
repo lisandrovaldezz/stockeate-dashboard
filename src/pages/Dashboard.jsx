@@ -17,8 +17,11 @@ import { useModalNavigation } from "../hooks/useModalNavigation.js";
 import { useRemitos } from "../hooks/useRemitos.js";
 import { LowStockSkeleton } from "../components/skeletons/LowStockSkeleton.jsx";
 import { LastRemitos } from "../components/LastRemitos.jsx";
-import { Remitos6MonthsChart } from "../components/Remitos6MonthsChart.jsx";
-import { Products6MonthsChart } from "../components/Products6MonthsChart.jsx";
+import { Last6MonthsBarChart } from "../components/Last6MonthsChart.jsx";
+import {
+  getRemitosStatsLast6Months,
+  getProductsStatsLast6Months,
+} from "../api.js";
 
 export function Dashboard() {
   const { logout } = useAuth();
@@ -148,8 +151,18 @@ export function Dashboard() {
           )}
         </section>
         <section className="dashboard-charts">
-          <Remitos6MonthsChart />
-          <Products6MonthsChart />
+          <Last6MonthsBarChart
+            apiFunction={getRemitosStatsLast6Months}
+            chartTitle="Últimos Remitos"
+            bar1Name="Ingresos"
+            bar2Name="Egresos"
+          />
+          <Last6MonthsBarChart
+            apiFunction={getProductsStatsLast6Months}
+            chartTitle="Últimos Productos"
+            bar1Name="Ingresos"
+            bar2Name="Egresos"
+          />
         </section>
       </main>
     </div>
