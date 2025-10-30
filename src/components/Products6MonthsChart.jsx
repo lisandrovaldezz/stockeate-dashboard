@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -10,28 +9,13 @@ import {
 } from "recharts";
 import { getProductsStatsLast6Months } from "../api.js";
 import { ChartSkeleton } from "../components/skeletons/ChartSkeleton.jsx";
-import { useBranches } from "../hooks/useBranches.js";
+import { useCharts } from "../hooks/useCharts.js";
 
 export function Products6MonthsChart() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const { branch } = useBranches();
-
-  useEffect(() => {
-    async function fetchStats() {
-      try {
-        const stats = await getProductsStatsLast6Months(branch.id);
-        setData(stats);
-      } catch (error) {
-        console.error("Error al obtener estadísticas de productos:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    if (branch.id?.length) {
-      fetchStats();
-    }
-  }, [branch.id]);
+  const { data, loading } = useCharts(
+    getProductsStatsLast6Months,
+    "Error al obtener estadísticas de productos:"
+  );
 
   if (loading) return <ChartSkeleton />;
   if (!data.length) return <p>No hay datos de los últimos meses.</p>;

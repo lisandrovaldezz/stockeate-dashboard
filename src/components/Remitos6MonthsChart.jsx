@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -10,36 +9,21 @@ import {
 } from "recharts";
 import { getRemitosStatsLast6Months } from "../api.js";
 import { ChartSkeleton } from "../components/skeletons/ChartSkeleton.jsx";
-import { useBranches } from "../hooks/useBranches.js";
+import { useCharts } from "../hooks/useCharts.js";
 
 export function Remitos6MonthsChart() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const { branch } = useBranches();
-
-  useEffect(() => {
-    async function fetchStats() {
-      try {
-        const stats = await getRemitosStatsLast6Months(branch.id);
-        setData(stats);
-      } catch (error) {
-        console.error("Error al obtener estadísticas de productos:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    if (branch.id?.length) {
-      fetchStats();
-    }
-  }, [branch.id]);
+  const { data, loading } = useCharts(
+    getRemitosStatsLast6Months,
+    "Error al obtener estadísticas de remitos:"
+  );
 
   if (loading) return <ChartSkeleton />;
-  if (!data.length) return <p>No hay datos de los últimos meses.</p>;
+  if (!data || !data.length) return <p>No hay datos de los últimos meses.</p>;
 
   return (
     <div style={{ width: "100%", height: "300px" }}>
       <h3 style={{ textAlign: "center", marginBottom: "10px" }}>
-        Productos ingresados y egresados por mes
+        Remitos ingresados y egresados por mes
       </h3>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data}>
