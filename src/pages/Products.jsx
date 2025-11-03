@@ -7,6 +7,7 @@ import save from "../assets/save.svg";
 import add from "../assets/add.svg";
 import sort from "../assets/sort-alphabetically.svg";
 import refresh from "../assets/refresh.svg";
+import filterLowStock from "../assets/filter.svg";
 import { updateProduct, toggleProductActive } from "../api.js";
 import toast from "react-hot-toast";
 import { ToggleSwitch } from "../components/ToggleSwitch.jsx";
@@ -14,6 +15,7 @@ import { ModalAddProduct } from "../components/ModalAddProduct.jsx";
 import { useSearchParams } from "react-router-dom";
 import { BackAndTitle } from "../components/BackAndTitle.jsx";
 import { useBranches } from "../hooks/useBranches.js";
+import { FilterButton } from "../components/FilterButton.jsx";
 
 export function Products() {
   const { products, loading, fetchProducts } = useProducts();
@@ -26,9 +28,9 @@ export function Products() {
   const [localStates, setLocalStates] = useState({});
   const [searchParams] = useSearchParams();
   const [sortAscending, setSortAscending] = useState(true);
+  const [showLowStock, setShowLowStock] = useState(false);
   const { branch } = useBranches();
   const openModal = searchParams.get("openModal");
-
   const editRef = useRef(null);
 
   const filteredProducts = products
@@ -36,7 +38,8 @@ export function Products() {
       (p) =>
         (showInactive ? !p.isActive : p.isActive) &&
         (p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          p.code.toLowerCase().includes(searchTerm.toLowerCase()))
+          p.code.toLowerCase().includes(searchTerm.toLowerCase())) &&
+        (!showLowStock || p.stock <= 10)
     )
     .sort((a, b) => {
       if (a.name.toLowerCase() < b.name.toLowerCase())
@@ -47,12 +50,20 @@ export function Products() {
     });
 
   const toggleSortOrder = () => setSortAscending((prev) => !prev);
+  const toggleLowStockFilter = () => setShowLowStock((prev) => !prev);
 
   useEffect(() => {
     if (openModal === "true") {
       setShowAddModal(true);
     }
   }, [openModal]);
+
+  useEffect(() => {
+    const filterParam = searchParams.get("filterLowStock");
+    if (filterParam === "true") {
+      setShowLowStock(true);
+    }
+  }, [searchParams]);
 
   const handleRefresh = () => fetchProducts();
 
@@ -142,21 +153,30 @@ export function Products() {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="products-search"
         />
-        <button className="products-sort-button" onClick={toggleSortOrder}>
-          <img src={sort} alt="Ordenar" title="Ordenar" />
-          Ordenar por nombre
-        </button>
-        <button
-          className="add-product-button"
+        <FilterButton
+          text="Ordenar por nombre"
+          img={sort}
+          onClick={toggleSortOrder}
+          active={false}
+        />
+        <FilterButton
+          text={showLowStock ? "Mostrar todos" : "Bajo stock"}
+          img={filterLowStock}
+          onClick={toggleLowStockFilter}
+          active={showLowStock}
+        />
+        <FilterButton
+          text="Agregar Producto"
+          img={add}
           onClick={() => setShowAddModal(true)}
-        >
-          <img src={add} alt="Agregar" title="Agregar" />
-          Agregar producto
-        </button>
-        <button className="refresh-products-button" onClick={handleRefresh}>
-          <img src={refresh} alt="Actualizar" title="Actualizar" />
-          Actualizar
-        </button>
+          active={false}
+        />
+        <FilterButton
+          text="Actualizar"
+          img={refresh}
+          onClick={handleRefresh}
+          active={false}
+        />
         <button
           className={`toggle-inactive-button ${showInactive ? "active" : ""}`}
           onClick={() => setShowInactive((prev) => !prev)}

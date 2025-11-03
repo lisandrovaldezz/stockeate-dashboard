@@ -44,7 +44,7 @@ export function Dashboard() {
     }
   };
 
-  const lowStockCount = products.filter((p) => p.stock < 10).length;
+  const lowStockCount = products.filter((p) => p.stock <= 10).length;
   const totalProducts = products.length;
 
   return (
@@ -135,7 +135,10 @@ export function Dashboard() {
             </div>
           </div>
           {lowStockCount > 0 ? (
-            <div className="dashboard-low-stock">
+            <button
+              className="dashboard-low-stock"
+              onClick={() => navigate("/products?filterLowStock=true")}
+            >
               <div className="dashboard-low-stock-title">
                 <img src={alertIcon} alt="alert-icon" />
                 <h3>
@@ -145,7 +148,7 @@ export function Dashboard() {
                 </h3>
               </div>
               <h1>{lowStockCount}</h1>
-            </div>
+            </button>
           ) : (
             <LowStockSkeleton />
           )}

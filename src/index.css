@@ -419,7 +419,7 @@ body {
 .dashboard-low-stock {
   display: flex;
   align-self: center;
-  padding: 15px 20px;
+  padding: 45px 25px;
   border: 1px solid #ffcc00;
   border-left: 6px solid #ff9900;
   border-top: 3px solid #ff9900;
@@ -429,6 +429,10 @@ body {
   gap: 10px;
   height: 58px;
   transition: 0.2s;
+  align-items: center;
+  font: inherit;
+  cursor: pointer;
+  transition: transform 0.2s, filter 0.2s;
 }
 
 .dashboard-low-stock:hover {
@@ -460,7 +464,7 @@ body {
   font-size: 40px;
   font-weight: 700;
   color: #ff9900;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
 }
 
 .dashboard-aside .back-and-title {
@@ -671,9 +675,8 @@ body {
   font-size: 20px;
   text-align: center;
   border: none;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: #eee;
+  font: inherit;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -699,10 +702,7 @@ input[type="number"]::-webkit-outer-spin-button {
   transform: scale(1.1);
 }
 
-.products-sort-button,
-.add-product-button,
-.toggle-inactive-button,
-.refresh-products-button {
+.toggle-inactive-button {
   background: #035fc2;
   padding: 6px;
   border-radius: 6px;
@@ -718,27 +718,8 @@ input[type="number"]::-webkit-outer-spin-button {
   gap: 3rem;
 }
 
-.add-product-button img {
-  width: 20px;
-}
-
-.products-sort-button,
-.refresh-products-button,
-.add-product-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-
 .toggle-inactive-button {
   background: #555;
-}
-
-.add-product-button:hover,
-.toggle-inactive-button:hover,
-.refresh-products-button:hover {
-  filter: brightness(120%);
 }
 
 .inactive-row {
@@ -753,6 +734,32 @@ input[type="number"]::-webkit-outer-spin-button {
   border: 1px solid #3087e6;
   background-color: #e3e7eb85;
   transition: all 0.2s ease;
+}
+
+/* ----------------------------------------- FILTER BUTTON ----------------------------------------- */
+
+.filter-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #035fc2;
+  padding: 6px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  border: 2px solid transparent;
+}
+
+.filter-button:hover {
+  filter: brightness(120%);
+}
+
+.filter-button.active {
+  background: #3551a0;
+  border: 2px solid rgb(205, 208, 247);
 }
 
 /* ----------------------------------------- TABLE SKELETON ----------------------------------------- */
@@ -1162,33 +1169,9 @@ skeleton-products-table-body {
   gap: 3rem;
 }
 
-.remitos-filters button {
-  background: #035fc2;
-  padding: 6px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  color: #fff;
-  border: 2px solid transparent;
-  outline: none;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.remitos-filters button:hover {
-  filter: brightness(120%);
-}
-
 .remitos-filters img {
   width: 25px;
   height: 25px;
-}
-
-.remitos-filters button.active {
-  background: #3551a0;
-  border: 2px solid rgb(205, 208, 247);
 }
 
 /* ----------------------------------------- MODAL REMITOS ----------------------------------------- */

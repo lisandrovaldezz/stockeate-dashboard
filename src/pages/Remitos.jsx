@@ -6,6 +6,7 @@ import { RemitoCard } from "../components/RemitoCard.jsx";
 import { ModalAddRemito } from "../components/ModalAddRemito.jsx";
 import { BackAndTitle } from "../components/BackAndTitle.jsx";
 import { useSearchParams } from "react-router-dom";
+import { FilterButton } from "../components/FilterButton.jsx";
 import all from "../assets/all.svg";
 import fileDown from "../assets/file-down.svg";
 import fileUp from "../assets/file-up.svg";
@@ -49,31 +50,30 @@ export function Remitos() {
           className="remitos-search"
           onChange={(e) => setSearch(e.target.value)}
         />
-        <button
-          className={filter === "ALL" ? "active" : ""}
+        <FilterButton
+          text="Todos"
+          img={all}
           onClick={() => setFilter("ALL")}
-        >
-          <img src={all} alt="Todos" />
-          Todos
-        </button>
-        <button
-          className={filter === "IN" ? "active" : ""}
+          active={filter === "ALL"}
+        />
+        <FilterButton
+          text="Entradas"
+          img={fileUp}
           onClick={() => setFilter("IN")}
-        >
-          <img src={fileUp} alt="Entradas" />
-          Entradas
-        </button>
-        <button
-          className={filter === "OUT" ? "active" : ""}
+          active={filter === "IN"}
+        />
+        <FilterButton
+          text="Salidas"
+          img={fileDown}
           onClick={() => setFilter("OUT")}
-        >
-          <img src={fileDown} alt="Salidas" />
-          Salidas
-        </button>
-        <button onClick={() => setShowCreateModal(true)}>
-          <img src={filePlus} alt="Nuevo Remito" />
-          Nuevo Remito
-        </button>{" "}
+          active={filter === "OUT"}
+        />
+        <FilterButton
+          text="Nuevo Remito"
+          img={filePlus}
+          onClick={() => setShowCreateModal(true)}
+          active={false}
+        />
       </div>
       <div className="remitos-list">
         {loading ? (
