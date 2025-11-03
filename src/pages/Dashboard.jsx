@@ -90,7 +90,7 @@ export function Dashboard() {
               text="Productos por variedad"
             />
           )}
-          {stats.total === 0 ? (
+          {!stats.year ? (
             <SquareSkeleton />
           ) : (
             <Square
@@ -99,7 +99,7 @@ export function Dashboard() {
               text="Productos entrada mensuales"
             />
           )}
-          {stats.total === 0 ? (
+          {!stats.year ? (
             <SquareSkeleton />
           ) : (
             <Square
@@ -108,7 +108,7 @@ export function Dashboard() {
               text="Productos salida mensuales"
             />
           )}
-          {stats.total === 0 ? (
+          {!stats.year ? (
             <SquareSkeleton />
           ) : (
             <Square
@@ -117,7 +117,7 @@ export function Dashboard() {
               text="Remitos entrada mensuales"
             />
           )}
-          {stats.total === 0 ? (
+          {!stats.year ? (
             <SquareSkeleton />
           ) : (
             <Square
