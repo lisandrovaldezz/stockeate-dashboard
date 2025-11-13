@@ -29,10 +29,16 @@ export function useAuth() {
     }
   };
 
-  const register = async (email, password) => {
+  const register = async (email, password, firstName, lastName, dni) => {
     setLoading(true);
     try {
-      const { data } = await api.post("/auth/register", { email, password });
+      const { data } = await api.post("/auth/register", {
+        email,
+        password,
+        firstName,
+        lastName,
+        dni,
+      });
       localStorage.setItem("token", data.access_token);
       setToken(data.access_token);
       return true;
