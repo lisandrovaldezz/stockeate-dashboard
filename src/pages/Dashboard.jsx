@@ -25,7 +25,7 @@ import {
 
 export function Dashboard() {
   const { logout } = useAuth();
-  const { products } = useProducts();
+  const { products, loading } = useProducts();
   const { stats } = useRemitos();
   const navigate = useNavigate();
 
@@ -134,7 +134,9 @@ export function Dashboard() {
               <LastRemitos />
             </div>
           </div>
-          {lowStockCount >= 0 ? (
+          {loading ? (
+            <LowStockSkeleton />
+          ) : (
             <button
               className="dashboard-low-stock"
               onClick={() => navigate("/products?filterLowStock=true")}
@@ -149,8 +151,6 @@ export function Dashboard() {
               </div>
               <h1>{lowStockCount}</h1>
             </button>
-          ) : (
-            <LowStockSkeleton />
           )}
         </section>
         <section className="dashboard-charts">
