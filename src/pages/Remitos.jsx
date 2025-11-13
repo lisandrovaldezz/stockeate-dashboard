@@ -50,30 +50,34 @@ export function Remitos() {
           className="remitos-search"
           onChange={(e) => setSearch(e.target.value)}
         />
-        <FilterButton
-          text="Todos"
-          img={all}
-          onClick={() => setFilter("ALL")}
-          active={filter === "ALL"}
-        />
-        <FilterButton
-          text="Entradas"
-          img={fileUp}
-          onClick={() => setFilter("IN")}
-          active={filter === "IN"}
-        />
-        <FilterButton
-          text="Salidas"
-          img={fileDown}
-          onClick={() => setFilter("OUT")}
-          active={filter === "OUT"}
-        />
-        <FilterButton
-          text="Nuevo Remito"
-          img={filePlus}
-          onClick={() => setShowCreateModal(true)}
-          active={false}
-        />
+        <div className="remitos-filters-buttons">
+          <FilterButton
+            text="Nuevo Remito"
+            img={filePlus}
+            onClick={() => setShowCreateModal(true)}
+            active={false}
+          />
+          <FilterButton
+            text="Todos"
+            img={all}
+            onClick={() => setFilter("ALL")}
+            active={filter === "ALL"}
+          />
+        </div>
+        <div className="remitos-filters-buttons">
+          <FilterButton
+            text="Entradas"
+            img={fileUp}
+            onClick={() => setFilter("IN")}
+            active={filter === "IN"}
+          />
+          <FilterButton
+            text="Salidas"
+            img={fileDown}
+            onClick={() => setFilter("OUT")}
+            active={filter === "OUT"}
+          />
+        </div>
       </div>
       <div className="remitos-list">
         {loading ? (

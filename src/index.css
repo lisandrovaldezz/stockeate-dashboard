@@ -1166,12 +1166,46 @@ skeleton-products-table-body {
 .remitos-filters {
   display: flex;
   margin-bottom: 2rem;
-  gap: 3rem;
+  gap: 2.6rem;
 }
 
 .remitos-filters img {
   width: 25px;
   height: 25px;
+}
+
+.remitos-filters-buttons {
+  display: flex;
+  gap: 2.6rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .remitos-filters-buttons {
+    display: flex;
+    gap: 1.4rem;
+  }
+  .remitos-filters {
+    gap: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .remitos-filters {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .remitos-filters-buttons {
+    display: flex;
+    width: 382px;
+    gap: 2rem;
+    justify-content: center;
+  }
+  .remitos-search {
+    margin-left: 0;
+    width: 80%;
+    font-size: 16px;
+  }
 }
 
 /* ----------------------------------------- MODAL REMITOS ----------------------------------------- */
@@ -1185,6 +1219,7 @@ skeleton-products-table-body {
   justify-content: center;
   z-index: 10;
   animation: fadeIn 0.2s ease-in-out;
+  padding: 1rem;
 }
 
 .remito-modal-container {
@@ -1193,6 +1228,7 @@ skeleton-products-table-body {
   border: 1px solid #9b9999;
   padding: 1rem;
   width: 700px;
+  max-width: 95vw;
   max-height: 80vh;
   overflow-y: auto;
   animation: slideIn 0.2s ease-in-out;
@@ -1209,6 +1245,8 @@ skeleton-products-table-body {
   justify-content: space-between;
   align-items: center;
   text-indent: 0;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .remito-modal-header-title h2 {
@@ -1220,10 +1258,15 @@ skeleton-products-table-body {
   font-size: 14px;
 }
 
+.remito-modal-table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
 .remito-modal-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 1rem;
+  min-width: 500px;
 }
 
 .remito-modal-table th,
@@ -1231,12 +1274,14 @@ skeleton-products-table-body {
   border: 1px solid #ccc;
   padding: 0.5rem;
   text-align: center;
+  white-space: nowrap;
 }
 
 .remito-modal-actions {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .remito-pdf-button {
@@ -1285,6 +1330,38 @@ skeleton-products-table-body {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .remito-modal-overlay {
+    padding: 0.5rem;
+  }
+
+  .remito-modal-container {
+    width: 100%;
+    padding: 0.75rem;
+    max-height: 90vh;
+  }
+
+  .remito-modal-header-title h2 {
+    font-size: 1.2rem;
+  }
+
+  .remito-modal-table th,
+  .remito-modal-table td {
+    padding: 0.4rem;
+    font-size: 14px;
+  }
+
+  .remito-pdf-button,
+  .remito-close-button {
+    flex: 1;
+    font-size: 14px;
+  }
+
+  .remito-modal-actions {
+    justify-content: stretch;
+  }
+}
+
 /* ----------------------------------------- REMITO CARD ----------------------------------------- */
 
 .remito-card {
@@ -1294,7 +1371,8 @@ skeleton-products-table-body {
   margin-bottom: 1rem;
   background: #2a2a4e;
   transition: 0.2s;
-  min-width: 650px;
+  width: 75%;
+  max-width: 650px;
 }
 
 .remito-card-header {
@@ -1307,10 +1385,12 @@ skeleton-products-table-body {
   background: rgba(56, 56, 119, 0.795);
 }
 .remito-card h2 {
+  font-size: 1.5rem;
   margin: 0;
   padding: 0;
 }
-.remito-card p {
+
+.remito-card-text {
   margin: 12px;
   padding: 0;
 }
@@ -1331,6 +1411,25 @@ skeleton-products-table-body {
 
 .remito-card button:hover {
   filter: brightness(125%);
+}
+
+.remito-card-info {
+  display: flex;
+  gap: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .remito-card h2 {
+    font-size: 1.2rem;
+  }
+  .remito-card span {
+    font-size: 12px;
+  }
+  .remito-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
 }
 
 /* ----------------------------------------- REMITOS SKELETON ----------------------------------------- */
@@ -1447,6 +1546,14 @@ skeleton-products-table-body {
   flex-direction: column;
 }
 
+.remito-add-modal-content input:-webkit-autofill,
+.remito-add-modal-content input:-webkit-autofill:hover,
+.remito-add-modal-content input:-webkit-autofill:focus,
+.remito-add-modal-content input:-webkit-autofill:active {
+  -webkit-text-fill-color: white !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 .remito-add-modal-content textarea,
 .remito-add-modal-content select,
 .remito-add-modal-content input {
@@ -1525,6 +1632,7 @@ skeleton-products-table-body {
   border: none;
   cursor: pointer;
 }
+
 .remito-add-modal-actions {
   display: flex;
   justify-content: flex-end;
@@ -1551,6 +1659,44 @@ skeleton-products-table-body {
 
 .remito-add-modal-actions button:hover {
   filter: brightness(120%);
+}
+
+@media screen and (max-width: 768px) {
+  .remito-add-modal-content textarea,
+  .remito-add-modal-content select,
+  .remito-add-modal-content input {
+    padding: 3px;
+    font-size: 12px;
+    width: 300px;
+  }
+  .remito-add-modal-content {
+    width: 300px;
+  }
+  .remito-add-product-selector {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+  .remito-add-product-selector-input {
+    display: flex;
+    gap: 8px;
+  }
+  .remito-add-product-selector-input input {
+    width: 100%;
+  }
+  .remito-add-product-selector button {
+    width: 100%;
+  }
+  .remito-add-modal-actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+    margin-top: 35px;
+  }
+  .remito-add-modal-actions button {
+    width: 100%;
+  }
 }
 
 /* ----------------------------------------- LAST REMITOS ----------------------------------------- */

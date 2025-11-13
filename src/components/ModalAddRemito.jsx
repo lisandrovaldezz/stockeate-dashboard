@@ -181,19 +181,20 @@ export function ModalAddRemito({ onClose }) {
                 </option>
               ))}
             </select>
-
-            <input
-              type="number"
-              placeholder="Cantidad"
-              value={qty}
-              onChange={(e) => setQty(e.target.value)}
-            />
-            <input
-              type="number"
-              placeholder="Precio unitario"
-              value={unitPrice}
-              onChange={(e) => setUnitPrice(e.target.value)}
-            />
+            <div className="remito-add-product-selector-input">
+              <input
+                type="number"
+                placeholder="Cantidad"
+                value={qty}
+                onChange={(e) => setQty(e.target.value)}
+              />
+              <input
+                type="number"
+                placeholder="Precio unitario"
+                value={unitPrice}
+                onChange={(e) => setUnitPrice(e.target.value)}
+              />
+            </div>
             <button type="button" onClick={handleAddItem}>
               Agregar
             </button>

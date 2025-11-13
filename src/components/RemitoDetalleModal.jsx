@@ -93,39 +93,41 @@ export function RemitoDetalleModal({ remito, onClose }) {
           </p>
         </div>
 
-        <table className="remito-modal-table">
-          <thead>
-            <tr>
-              <th>Producto</th>
-              <th>Código</th>
-              <th>Cantidad</th>
-              <th>Precio Unitario</th>
-              <th>Importe Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            {remito.items.map((item) => (
-              <tr key={item.id}>
-                <td>{item.product.name}</td>
-                <td>{item.product.code}</td>
-                <td>{item.qty}</td>
-                <td>${parseFloat(item.unitPrice).toFixed(2)}</td>
-                <td>${calcularTotal(item).toFixed(2)}</td>
+        <div className="remito-modal-table-wrapper">
+          <table className="remito-modal-table">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Código</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Importe Total</th>
               </tr>
-            ))}
-          </tbody>
-          <tfoot>
-            <tr>
-              <td
-                colSpan="4"
-                style={{ textAlign: "right", fontWeight: "bold" }}
-              >
-                Total general:
-              </td>
-              <td>${totalGeneral.toFixed(2)}</td>
-            </tr>
-          </tfoot>
-        </table>
+            </thead>
+            <tbody>
+              {remito.items.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.product.name}</td>
+                  <td>{item.product.code}</td>
+                  <td>{item.qty}</td>
+                  <td>${parseFloat(item.unitPrice).toFixed(2)}</td>
+                  <td>${calcularTotal(item).toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td
+                  colSpan="4"
+                  style={{ textAlign: "right", fontWeight: "bold" }}
+                >
+                  Total general:
+                </td>
+                <td>${totalGeneral.toFixed(2)}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
 
         <div className="remito-modal-actions">
           <button className="remito-pdf-button" onClick={handleExportPDF}>

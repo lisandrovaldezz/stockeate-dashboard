@@ -134,7 +134,7 @@ export function Dashboard() {
               <LastRemitos />
             </div>
           </div>
-          {lowStockCount > 0 ? (
+          {lowStockCount >= 0 ? (
             <button
               className="dashboard-low-stock"
               onClick={() => navigate("/products?filterLowStock=true")}

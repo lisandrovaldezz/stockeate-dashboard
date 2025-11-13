@@ -95,16 +95,12 @@ export function BranchSelect() {
                 </svg>
                 <div className="branch-select-item-text">
                   <h2>{branch.name}</h2>
-                  <p>{branch.location}</p>
+                  <p>{branch.address}</p>
                 </div>
               </button>
             ))
           )}
-          <button
-            className="branch-select-continue"
-            onClick={handleContinue}
-            // disabled={!selected}
-          >
+          <button className="branch-select-continue" onClick={handleContinue}>
             {selected
               ? `Continuar con ${selected.name}`
               : "Seleccioná una sucursal"}

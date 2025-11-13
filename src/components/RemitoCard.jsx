@@ -15,14 +15,17 @@ export function RemitoCard({ remito, onSelect }) {
         <h2>{remito.tmpNumber}</h2>
         <InOutBadge type={remito.type} />
       </div>
-      <p>
+      <div className="remito-card-text">
         <strong>Fecha:</strong> {fechaFormateada}
-      </p>
-      <p>
-        <strong>Cantidad de ítems:</strong> {remito.items.length}
-        <> - - - - </>
-        <strong>Total:</strong> ${total.toFixed(2)}
-      </p>
+      </div>
+      <div className="remito-card-info remito-card-text">
+        <div>
+          <strong>Cantidad de ítems:</strong> {remito.items.length}
+        </div>
+        <div>
+          <strong>Total:</strong> ${total.toFixed(2)}
+        </div>
+      </div>
       <button onClick={onSelect}>Ver detalle</button>
     </div>
   );
